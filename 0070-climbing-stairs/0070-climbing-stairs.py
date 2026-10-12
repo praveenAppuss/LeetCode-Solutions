@@ -1,18 +1,13 @@
-from functools import lru_cache
 class Solution:
     def climbStairs(self, n: int) -> int:
-        @lru_cache(None)
-        def climb(n):
-            if n==1:
-                return 1
-            if n==2:
-                return 2
-            return climb(n-1)+climb(n-2)
-        return climb(n)
-
-            
-        
-        
+        if n<=2:return n
+        first =1
+        second =2
+        for i in range(3,n+1):
+            current=first+second
+            first=second
+            second=current
+        return second
 
 # Synced seamlessly with LeetHub Pro
 # Pro features: https://bit.ly/leethubpro | Free version: https://bit.ly/leethubv4
